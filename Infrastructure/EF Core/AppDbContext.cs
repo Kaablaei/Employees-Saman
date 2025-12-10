@@ -20,9 +20,16 @@ namespace Infrastructure.EF_Core
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Request>()
-                .HasOne(r => r.RegustedUser)
+                .HasKey(r => r.RequestId);
+
+               modelBuilder.Entity<User>()
+                .HasKey(r => r.UserId);
+           
+
+            modelBuilder.Entity<Request>()
+                .HasOne(r => r.RequestedUser)
                 .WithMany()
-                .HasForeignKey(p => p.RegustedUserId)
+                .HasForeignKey(p => p.RequestedUserId)
                 .OnDelete(DeleteBehavior.NoAction);
 
 
@@ -31,6 +38,7 @@ namespace Infrastructure.EF_Core
             modelBuilder.Entity<User>().HasData(
                 new User
                 {
+                    UserId = -1,
                     UserName = "Admin",
                     Password = "1234",
                     Role = Domain.Users.Enums.UserRole.Admin
