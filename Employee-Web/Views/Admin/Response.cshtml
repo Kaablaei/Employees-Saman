@@ -1,0 +1,82 @@
+﻿
+@{
+    ViewData["Title"] = "Response";
+    Layout = "AdminLayout";
+}
+
+
+<div class="container mt-4">
+
+	<div class="card shadow-sm">
+		<div class="card-header bg-primary text-white">
+			<h4 class="mb-0">Request Details</h4>
+		</div>
+
+		<div class="card-body">
+
+			<div class="mb-3">
+				<label class="fw-bold">Request ID:</label>
+				<div>@Model.RequestId</div>
+			</div>
+
+
+			<div class="mb-3">
+				<label class="fw-bold">Start Date:</label>
+				<div>@Model.StardDate.ToString("yyyy/MM/dd")</div>
+			</div>
+
+			<div class="mb-3">
+				<label class="fw-bold">Finish Date:</label>
+				<div>@Model.FinishDateDate.ToString("yyyy/MM/dd")</div>
+			</div>
+
+			<div class="mb-3">
+				<label class="fw-bold">Reason:</label>
+				<div>@(string.IsNullOrWhiteSpace(Model.Reason) ? "-" : Model.Reason)</div>
+			</div>
+
+			<div class="mb-3">
+				<label class="fw-bold">Created At:</label>
+				<div>@Model.CratedDate.ToString("yyyy/MM/dd")</div>
+			</div>
+
+			<div class="mb-3">
+				<label class="fw-bold">Status:</label>
+				<div>
+					@Model.Status.ToString()
+				</div>
+			</div>
+
+			@if (!string.IsNullOrWhiteSpace(Model.AdminResponse))
+			{
+				<div class="mb-3">
+					<label class="fw-bold">Admin Response:</label>
+					<div class="alert alert-info">@Model.AdminResponse</div>
+				</div>
+			}
+
+		</div>
+
+		<div class="card-footer text-end">
+			<form asp-action="Response" asp-controller="Admin" method="post">
+				<input type="hidden" name="RequestId" value="@Model.RequestId" />
+
+				<div class="mb-3">
+					<label>Admin Response:</label>
+					<textarea name="response" class="form-control" rows="3" placeholder="Enter your response....."></textarea>
+				</div>
+
+				<div class="mb-3">
+				
+					<button type="submit" name="Accepted" value="true" class="btn btn-success me-2">
+						Accept
+					</button>
+					<button type="submit" name="Accepted" value="false" class="btn btn-danger">
+						Reject
+					</button>
+				</div>
+			</form>
+		</div>
+	</div>
+
+</div>
