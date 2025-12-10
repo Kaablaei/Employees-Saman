@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Application.DTOs;
+using Microsoft.AspNetCore.Mvc;
 
 namespace Employee_Web.Controllers
 {
@@ -8,5 +9,23 @@ namespace Employee_Web.Controllers
         {
             return View();
         }
+
+        [HttpGet]
+        public IActionResult NewRequest()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult NewRequest(NewRequestDTO model)
+        {
+            return View();
+        }
+
+        public IActionResult Detail(int requestId)
+        {
+            return View();
+        }
+
     }
 }
