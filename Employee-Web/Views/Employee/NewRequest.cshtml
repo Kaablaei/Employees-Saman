@@ -1,0 +1,28 @@
+﻿@using Application.DTOs
+@model NewRequestDTO
+@{
+    ViewData["Title"] = "NewRequest";
+    Layout = "EmployeeLayout";
+}
+
+<h1>NewRequest</h1>
+
+<form asp-action="NewRequest" method="post" class="p-4 border rounded shadow-sm bg-light">
+
+    <div class="mb-3">
+        <label class="form-label fw-bold">Start Date</label>
+        <input asp-for="StardDate" type="date" name="StartDate" class="form-control" required />
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label fw-bold">Finish Date</label>
+        <input asp-for="FinishDateDate" type="date" name="FinishDateDate" class="form-control" required />
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label fw-bold">Reason (Optional)</label>
+        <textarea asp-for="Reason" name="Reason" class="form-control" rows="3" placeholder="Enter reason (optional)....."></textarea>
+    </div>
+
+    <button type="submit" class="btn btn-primary w-100">Submit Request</button>
+</form>

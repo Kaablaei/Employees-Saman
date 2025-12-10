@@ -32,11 +32,13 @@ namespace Employee_Web.Controllers
             var LoginUser = _accountigService.GetUserInfo(model.UserName, model.Password);
             if (LoginUser != null)
             {
- 
+
                 var clime = new List<Claim>()
                 {
-                    new Claim(ClaimTypes.NameIdentifier,model.UserName),
-                    new Claim(ClaimTypes.Role, LoginUser.Role.ToString())
+                    new Claim(ClaimTypes.Name, LoginUser.UserName),
+                    new Claim(ClaimTypes.Role, LoginUser.Role.ToString()),
+                    new Claim(ClaimTypes.NameIdentifier, LoginUser.UserId.ToString()),
+
                 };
                 var identity = new ClaimsIdentity(clime, CookieAuthenticationDefaults.AuthenticationScheme);
                 var prins = new ClaimsPrincipal(identity);

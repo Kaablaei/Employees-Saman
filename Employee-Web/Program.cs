@@ -19,6 +19,7 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 #region IOC
 builder.Services.AddScoped<IAccountingServise, AccountingServise>();
 builder.Services.AddScoped<IAdminService, AdminService>();
+builder.Services.AddScoped<IUserService, UserService>();
 
 #endregion
 
@@ -49,7 +50,15 @@ using (var scope = app.Services.CreateScope())
         UserName = "Admin",
         Password = "1234",
         Role = Domain.Users.Enums.UserRole.Admin
+    }); 
+    context.Users.Add(new User
+    {
+        UserId = -2,
+        UserName = "user",
+        Password = "1234",
+        Role = Domain.Users.Enums.UserRole.Employee
     });
+    
     context.SaveChanges();
 
 }

@@ -15,7 +15,6 @@ namespace Employee_Web.Controllers
         }
         public IActionResult Index()
         {
-            // var model = _adminService.AllUsers();
             return View();
         }
         public IActionResult Users()
@@ -36,6 +35,5 @@ namespace Employee_Web.Controllers
             _adminService.AddEmployee(mode.UserName, mode.Password);
             return RedirectToAction(nameof(Users));
         }
-
     }
 }

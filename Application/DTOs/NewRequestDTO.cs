@@ -9,7 +9,9 @@ namespace Application.DTOs
 {
     public class NewRequestDTO
     {
+        [Required]
         public DateTime StardDate { get; set; }
+        [Required]
         public DateTime FinishDateDate { get; set; }
 
         public string? Reason { get; set; }

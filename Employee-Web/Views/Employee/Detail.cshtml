@@ -1,0 +1,65 @@
+﻿@using Domain.request
+@model Request
+@{
+	ViewData["Title"] = "Detail";
+	Layout = "EmployeeLayout";
+}
+
+<div class="container mt-4">
+
+	<div class="card shadow-sm">
+		<div class="card-header bg-primary text-white">
+			<h4 class="mb-0">Request Details</h4>
+		</div>
+
+		<div class="card-body">
+
+			<div class="mb-3">
+				<label class="fw-bold">Request ID:</label>
+				<div>@Model.RequestId</div>
+			</div>
+
+
+			<div class="mb-3">
+				<label class="fw-bold">Start Date:</label>
+				<div>@Model.StardDate.ToString("yyyy/MM/dd")</div>
+			</div>
+
+			<div class="mb-3">
+				<label class="fw-bold">Finish Date:</label>
+				<div>@Model.FinishDateDate.ToString("yyyy/MM/dd")</div>
+			</div>
+
+			<div class="mb-3">
+				<label class="fw-bold">Reason:</label>
+				<div>@(string.IsNullOrWhiteSpace(Model.Reason) ? "-" : Model.Reason)</div>
+			</div>
+
+			<div class="mb-3">
+				<label class="fw-bold">Created At:</label>
+				<div>@Model.CratedDate.ToString("yyyy/MM/dd")</div>
+			</div>
+
+			<div class="mb-3">
+				<label class="fw-bold">Status:</label>
+				<div>
+					@Model.Status.ToString()
+				</div>
+			</div>
+
+			@if (!string.IsNullOrWhiteSpace(Model.AdminResponse))
+			{
+				<div class="mb-3">
+					<label class="fw-bold">Admin Response:</label>
+					<div class="alert alert-info">@Model.AdminResponse</div>
+				</div>
+			}
+
+		</div>
+
+		<div class="card-footer text-end">
+			<a asp-action="Index" asp-controller="Employee" class="btn btn-secondary">Back</a>
+		</div>
+	</div>
+
+</div>
