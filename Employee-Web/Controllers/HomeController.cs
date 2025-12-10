@@ -1,5 +1,4 @@
-using System.Diagnostics;
-using Employee_Web.Models;
+using Application.DTOs;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Employee_Web.Controllers
@@ -18,15 +17,5 @@ namespace Employee_Web.Controllers
             return View();
         }
 
-        public IActionResult Privacy()
-        {
-            return View();
-        }
-
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
-        }
     }
 }

@@ -25,5 +25,10 @@ namespace Application.Services
             _context.SaveChanges();
             return newUser;
         }
+
+        public List<User> AllUsers()
+        {
+            return _context.Users.ToList();
+        }
     }
 }

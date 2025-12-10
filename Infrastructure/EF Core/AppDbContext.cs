@@ -22,8 +22,23 @@ namespace Infrastructure.EF_Core
             modelBuilder.Entity<Request>()
                 .HasOne(r => r.RegustedUser)
                 .WithMany()
-                .HasForeignKey(p=>p.RegustedUserId)
+                .HasForeignKey(p => p.RegustedUserId)
                 .OnDelete(DeleteBehavior.NoAction);
+
+
+            #region Seed Data 
+
+            modelBuilder.Entity<User>().HasData(
+                new User
+                {
+                    UserName = "Admin",
+                    Password = "1234",
+                    Role = Domain.Users.Enums.UserRole.Admin
+
+                });
+
+            #endregion
+
         }
 
     }
