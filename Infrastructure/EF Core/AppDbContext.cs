@@ -11,6 +11,7 @@ namespace Infrastructure.EF_Core
 {
     public class AppDbContext : DbContext
     {
+        //version of EF is 8.0.22
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
 
         public DbSet<User> Users { get; set; }
