@@ -1,4 +1,5 @@
-﻿using Application.Interfaces;
+﻿using Application.DTOs;
+using Application.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Employee_Web.Controllers
@@ -12,19 +13,26 @@ namespace Employee_Web.Controllers
         }
         public IActionResult Index()
         {
-           // var model = _adminService.AllUsers();
+            // var model = _adminService.AllUsers();
             return View();
-        }    
+        }
         public IActionResult Users()
         {
-           var model = _adminService.AllUsers();
+            var model = _adminService.AllUsers();
             return View(model);
         }
 
+        [HttpGet]
         public IActionResult NewUser()
         {
-           
             return View();
+        }
+        [HttpPost]
+        public IActionResult NewUser(NewUserDTO mode)
+        {
+            if(!ModelState.IsValid) return View(mode);
+            _adminService.AddEmployee(mode.UserName, mode.Password);
+            return RedirectToAction(nameof(Users));
         }
 
     }

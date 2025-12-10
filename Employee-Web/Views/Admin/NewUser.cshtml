@@ -1,0 +1,29 @@
+﻿@using Application.DTOs
+@model NewUserDTO 
+@{
+    ViewData["Title"] = "NewUser";
+    Layout = "AdminLayout";
+}
+ 
+
+<div class="d-flex justify-content-center align-items-center vh-100">
+    <div class="card p-4" style="min-width: 300px; max-width: 400px; width: 100%;">
+        <h3 class="text-center mb-4">Add New Employee</h3>
+
+        <form asp-action="NewUser" method="post">
+            <div class="mb-3">
+                <p class="card-title"> Username :</p>
+                <input asp-for="UserName" class="form-control" placeholder="Username">
+                <span asp-validation-for="UserName" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <p class="card-title"> Password :</p>
+                <input asp-for="Password" type="password" class="form-control" placeholder="Password">
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+
+            <button type="submit" class="btn btn-primary w-100">Add Employee</button>
+        </form>
+    </div>
+</div>
