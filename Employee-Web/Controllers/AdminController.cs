@@ -1,9 +1,11 @@
 ﻿using Application.DTOs;
 using Application.Interfaces;
+using Employee_Web.Filters;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Employee_Web.Controllers
 {
+    [AuthorizeRole("Admin")]
     public class AdminController : Controller
     {
         private readonly IAdminService _adminService;

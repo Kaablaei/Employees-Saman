@@ -1,8 +1,10 @@
 ﻿using Application.DTOs;
+using Employee_Web.Filters;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Employee_Web.Controllers
 {
+    [AuthorizeRole("Employee")]
     public class EmployeeController : Controller
     {
         public IActionResult Index()

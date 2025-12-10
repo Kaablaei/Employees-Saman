@@ -3,6 +3,7 @@ using Application.Interfaces;
 using Application.Services;
 using Domain.Users;
 using Infrastructure.EF_Core;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -19,6 +20,22 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 builder.Services.AddScoped<IAccountingServise, AccountingServise>();
 builder.Services.AddScoped<IAdminService, AdminService>();
 
+#endregion
+
+
+#region identity 
+builder.Services.AddAuthentication(p =>
+{
+    p.DefaultScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+    p.DefaultAuthenticateScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+    p.DefaultSignInScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+})
+.AddCookie(p =>
+{
+    p.LoginPath = "/Home/Index";
+    p.LogoutPath = "/Home/Logout";
+    p.ExpireTimeSpan = TimeSpan.FromDays(1);
+});
 #endregion
 
 var app = builder.Build();
