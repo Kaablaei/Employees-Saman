@@ -1,4 +1,6 @@
 
+using Application.Interfaces;
+using Application.Services;
 using Infrastructure.EF_Core;
 using Microsoft.EntityFrameworkCore;
 
@@ -12,6 +14,10 @@ builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseInMemoryDatabase("InRamDb");
 });
 
+#region IOC
+builder.Services.AddScoped<IAccountingServise, AccountingServise>();
+
+#endregion
 
 var app = builder.Build();
 

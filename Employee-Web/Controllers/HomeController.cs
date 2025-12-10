@@ -29,10 +29,11 @@ namespace Employee_Web.Controllers
             {
                 // Identty
 
-                if (LoginUser.Role == Domain.Users.Enums.UserRole.Admin) return RedirectToAction();
+                if (LoginUser.Role == Domain.Users.Enums.UserRole.Admin) return RedirectToAction("Index", "Admin");
 
-                return RedirectToAction();
+                return RedirectToAction("Index", "Employee");
             }
+            ModelState.AddModelError("UserName", "Invalid username or password");
             return View(model);
         }
 
