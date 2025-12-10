@@ -39,5 +39,10 @@ namespace Employee_Web.Controllers
 
 
 
+        public IActionResult Logout()
+        {
+            return View();
+        }
+
     }
 }

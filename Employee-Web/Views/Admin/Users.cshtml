@@ -1,0 +1,30 @@
+﻿@model List<Domain.Users.User>
+
+@{
+    ViewData["Title"] = "Users";
+    Layout = "AdminLayout";
+}
+
+<button type="button" class="btn btn-primary">Primary</button>
+<table class="table">
+    <thead class="thead-dark">
+        <tr>
+            <th scope="col">Id</th>
+            <th scope="col">UserName</th>
+            <th scope="col">Password</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var users in Model)
+        {
+            <tr>
+                <th scope="row">@users.UserId</th>
+                <th scope="row">@users.UserName</th>
+                <th scope="row">@users.Password</th>
+
+            </tr>
+        }
+        
+    </tbody>
+</table>

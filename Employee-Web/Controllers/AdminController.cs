@@ -12,8 +12,19 @@ namespace Employee_Web.Controllers
         }
         public IActionResult Index()
         {
-            var model = _adminService.AllUsers();
+           // var model = _adminService.AllUsers();
+            return View();
+        }    
+        public IActionResult Users()
+        {
+           var model = _adminService.AllUsers();
             return View(model);
+        }
+
+        public IActionResult NewUser()
+        {
+           
+            return View();
         }
 
     }
