@@ -1,6 +1,7 @@
 
 using Application.Interfaces;
 using Application.Services;
+using Domain.Users;
 using Infrastructure.EF_Core;
 using Microsoft.EntityFrameworkCore;
 
@@ -16,10 +17,25 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 
 #region IOC
 builder.Services.AddScoped<IAccountingServise, AccountingServise>();
+builder.Services.AddScoped<IAdminService, AdminService>();
 
 #endregion
 
 var app = builder.Build();
+
+using (var scope = app.Services.CreateScope())
+{
+    var context = scope.ServiceProvider.GetRequiredService<AppDbContext>();
+    context.Users.Add(new User
+    {
+        UserId = -1,
+        UserName = "Admin",
+        Password = "1234",
+        Role = Domain.Users.Enums.UserRole.Admin
+    });
+    context.SaveChanges();
+
+}
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())

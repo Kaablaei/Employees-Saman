@@ -31,22 +31,6 @@ namespace Infrastructure.EF_Core
                 .WithMany()
                 .HasForeignKey(p => p.RequestedUserId)
                 .OnDelete(DeleteBehavior.NoAction);
-
-
-            #region Seed Data 
-
-            modelBuilder.Entity<User>().HasData(
-                new User
-                {
-                    UserId = -1,
-                    UserName = "Admin",
-                    Password = "1234",
-                    Role = Domain.Users.Enums.UserRole.Admin
-
-                });
-
-            #endregion
-
         }
 
     }
