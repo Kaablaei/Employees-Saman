@@ -1,4 +1,4 @@
-﻿namespace Domain.request
+﻿namespace Domain.Requests.Enums
 {
     public enum RequestStatus
     {
