@@ -15,5 +15,7 @@ namespace Domain.request
         public DateTime CratedDate {  get; set; }
         public DateTime StardDate {  get; set; }
         public DateTime FinishDateDate {  get; set; }
+        public RequestStatus Status { get; set; }
+        public string? AdminResponse { get; set; }
     }
 }
