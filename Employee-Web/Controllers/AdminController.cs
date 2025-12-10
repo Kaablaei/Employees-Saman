@@ -10,12 +10,20 @@ namespace Employee_Web.Controllers
     public class AdminController : Controller
     {
         private readonly IAdminService _adminService;
-        public AdminController(IAdminService adminService)
+        private readonly IDailyCacheService _dailyCache;
+        public AdminController(IAdminService adminService, IDailyCacheService dailyCache)
         {
+            _dailyCache = dailyCache;
             _adminService = adminService;
         }
         public IActionResult Index()
         {
+            var stats = _dailyCache.GetStats();
+
+            ViewData["TotalToday"] = stats.Total;
+            ViewData["AcceptedToday"] = stats.Accepted;
+            ViewData["RejectedToday"] = stats.Rejected;
+
             var model = _adminService.GetPendingRequests();
             return View(model);
         }

@@ -11,16 +11,21 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
+builder.Services.AddMemoryCache();
+
 builder.Services.AddDbContext<AppDbContext>(options =>
 {
     options.UseInMemoryDatabase("InRamDb");
 });
 
 #region IOC
+
 builder.Services.AddScoped<IAccountingServise, AccountingServise>();
 builder.Services.AddScoped<IAdminService, AdminService>();
 builder.Services.AddScoped<IUserService, UserService>();
 
+builder.Services.AddSingleton<IDailyCacheService, DailyCacheService>();
+builder.Services.AddHostedService<DailyStatsUpdater>();
 #endregion
 
 
