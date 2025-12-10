@@ -58,13 +58,14 @@
 				<th>@req.StardDate.ToString("yyyy/MM/dd")</th>
 				<th>@req.FinishDateDate.ToString("yyyy/MM/dd")</th>
 				<th>@req.RequestedUser.UserName</th>
-				<th>@req.Status</th>
+				<th>@req.Reason</th>
 				<th>
 					<a asp-action="Response"
 					   asp-controller="Admin"
 					   asp-route-requestId="@req.RequestId"
 					   class="btn btn-sm btn-info">
-						Detail
+
+						Response
 					</a>
 				</th>
 			</tr>

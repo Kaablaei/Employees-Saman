@@ -3,6 +3,7 @@ using Domain.request;
 using Domain.Users;
 using Domain.Users.Enums;
 using Infrastructure.EF_Core;
+using Microsoft.EntityFrameworkCore;
 
 namespace Application.Services
 {
@@ -34,7 +35,7 @@ namespace Application.Services
 
         public List<Request> GetPendingRequests()
         {
-            return _context.Requests.Where(p => p.Status == Domain.Requests.Enums.RequestStatus.Pending).ToList();
+            return _context.Requests.Where(p => p.Status == Domain.Requests.Enums.RequestStatus.Pending).Include(r => r.RequestedUser).ToList();
         }
 
         public Request GetRequestById(long RequestId)

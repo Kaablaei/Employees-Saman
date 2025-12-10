@@ -52,8 +52,8 @@ namespace Employee_Web.Controllers
         public IActionResult Response(bool Accepted , string? response, long RequestId)
         {
             var model = _adminService.ChangeRequestStatus(Accepted, response, RequestId);
-        
-            return View(model);
+
+            return RedirectToAction(nameof(Index));
         }
 
 
