@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Application.DTOs
 {
-    public record AddUserDTO
+    public record LoginUserDTO 
     {
         [Required]
         [MaxLength(200)]
